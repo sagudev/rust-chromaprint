@@ -38,8 +38,7 @@ impl RollingIntegralImage {
             if col1idx == 0 {
                 row2[col2idx - 1] - row1[col2idx - 1]
             } else {
-                row2[col2idx - 1] - row1[col2idx - 1] - row2[col1idx - 1]
-                    + row1[col1idx - 1]
+                row2[col2idx - 1] - row1[col2idx - 1] - row2[col1idx - 1] + row1[col1idx - 1]
             }
         }
     }

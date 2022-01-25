@@ -23,9 +23,7 @@ impl<'a> BitWriter<'a> {
     }
 
     pub fn write_all(&mut self, values: &[u8], bits: u8) {
-        values
-            .iter()
-            .for_each(|value| self.write(*value, bits));
+        values.iter().for_each(|value| self.write(*value, bits));
     }
 
     /// Writes a `bits` number of bits from `value` to the stream.

@@ -1,6 +1,5 @@
 use combined_buffer::CombinedBuffer;
 
-
 pub struct Slicer<T> {
     slice_size: usize,
     buffer: Vec<T>,
@@ -36,7 +35,6 @@ where
             }
 
             let size = combined.len() - offset;
-            
 
             combined.read(offset, size)
         }

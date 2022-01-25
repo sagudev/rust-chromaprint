@@ -54,10 +54,9 @@ impl Fingerprinter {
     pub fn finish(&mut self) {
         let mut fft = self.fft.take().unwrap();
 
-        if let Some(last_samples) = self.audio_processor
-            .as_mut()
-            .unwrap()
-            .flush() { self.handle_resampled(last_samples, &mut fft) }
+        if let Some(last_samples) = self.audio_processor.as_mut().unwrap().flush() {
+            self.handle_resampled(last_samples, &mut fft)
+        }
 
         self.fft = Some(fft);
     }
