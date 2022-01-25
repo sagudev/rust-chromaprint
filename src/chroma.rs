@@ -64,7 +64,7 @@ impl NoteRange {
 /// * `sample_rate` - The maximum frequency.
 fn freq_to_idx(freq: u32, frame_size: u32, sample_rate: u32) -> u32 {
     let size_per_frequency = (frame_size as f32) / (sample_rate as f32);
-    return (freq as f32 * size_per_frequency).round() as u32;
+    (freq as f32 * size_per_frequency).round() as u32
 }
 
 /// Converts an index in an FFT array to a frequency.
@@ -75,7 +75,7 @@ fn freq_to_idx(freq: u32, frame_size: u32, sample_rate: u32) -> u32 {
 /// * `sample_rate` - The maximum frequency.
 fn idx_to_freq(idx: u32, frame_size: u32, sample_rate: u32) -> f64 {
     let frequency_per_size = (sample_rate as f64) / (frame_size as f64);
-    return idx as f64 * frequency_per_size;
+    idx as f64 * frequency_per_size
 }
 
 /// Converts a frequency in Hz into a note.

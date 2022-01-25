@@ -78,7 +78,7 @@ mod tests {
 
         assert_ulps_eq!(1.7, row1[0]);
         assert_ulps_eq!(3.399999999999999, row2[0]);
-        assert_ulps_eq!(10.199999999999999, row1[1]);
+        assert_ulps_eq!(10.2, row1[1]);
         assert_ulps_eq!(11.899999999999999, row2[1]);
     }
 

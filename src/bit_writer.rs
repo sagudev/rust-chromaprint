@@ -24,7 +24,7 @@ impl<'a> BitWriter<'a> {
 
     pub fn write_all(&mut self, values: &[u8], bits: u8) {
         values
-            .into_iter()
+            .iter()
             .for_each(|value| self.write(*value, bits));
     }
 
@@ -49,7 +49,7 @@ impl<'a> BitWriter<'a> {
     }
 
     fn write_buffer_to_output(&mut self) {
-        self.output[self.output_index] = (self.buffer & 255 as u16) as u8;
+        self.output[self.output_index] = (self.buffer & 255_u16) as u8;
         self.output_index += 1;
         self.buffer >>= 8;
         self.buffer_size = u8::saturating_sub(self.buffer_size, 8);

@@ -27,19 +27,19 @@ impl RollingIntegralImage {
             let row = &self.rows[(row2idx - 1) % self.rows.len()];
 
             if col1idx == 0 {
-                return row[col2idx - 1];
+                row[col2idx - 1]
             } else {
-                return row[col2idx - 1] - row[col1idx - 1];
+                row[col2idx - 1] - row[col1idx - 1]
             }
         } else {
             let row1 = &self.rows[(row1idx - 1) % self.rows.len()];
             let row2 = &self.rows[(row2idx - 1) % self.rows.len()];
 
             if col1idx == 0 {
-                return row2[col2idx - 1] - row1[col2idx - 1];
+                row2[col2idx - 1] - row1[col2idx - 1]
             } else {
-                return row2[col2idx - 1] - row1[col2idx - 1] - row2[col1idx - 1]
-                    + row1[col1idx - 1];
+                row2[col2idx - 1] - row1[col2idx - 1] - row2[col1idx - 1]
+                    + row1[col1idx - 1]
             }
         }
     }
@@ -61,7 +61,7 @@ impl RollingIntegralImage {
             }
         }
 
-        self.rows_count = self.rows_count + 1;
+        self.rows_count += 1;
         self.empty = false
     }
 }

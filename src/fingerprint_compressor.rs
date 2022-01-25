@@ -67,9 +67,9 @@ fn process_subfingerprint(mut x: u32, normal_bits: &mut Vec<u8>, exceptional_bit
 
 fn write_header(output: &mut [u8], size: usize, algorithm: u8) {
     output[0] = algorithm;
-    output[1] = ((size >> 16) & 255 as usize) as u8;
-    output[2] = ((size >> 8) & 255 as usize) as u8;
-    output[3] = (size & 255 as usize) as u8;
+    output[1] = ((size >> 16) & 255_usize) as u8;
+    output[2] = ((size >> 8) & 255_usize) as u8;
+    output[3] = (size & 255_usize) as u8;
 }
 
 #[cfg(test)]
