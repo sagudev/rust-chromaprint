@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Martin Charles <martincharles07@gmail.com>"]
 
 [dependencies]
-rustfft = { git = "https://github.com/awelkie/RustFFT.git" }
+rustfft = "6"
 base64 = "0.13"
 
 [dev-dependencies]

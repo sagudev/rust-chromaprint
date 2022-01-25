@@ -1,7 +1,7 @@
 use rustfft::algorithm::Radix4;
 use rustfft::num_complex::Complex;
-use rustfft::num_traits::Zero;
-use rustfft::FFT;
+use rustfft::Fft as FFT;
+use rustfft::FftDirection;
 
 use slicer::FixedSlicer;
 use std::f32::consts::PI;
@@ -19,7 +19,7 @@ impl Fft {
     pub fn new() -> Fft {
         Fft {
             slicer: Some(FixedSlicer::new(FRAME_SIZE, FRAME_SIZE - OVERLAP)),
-            fft: Radix4::new(FRAME_SIZE, false),
+            fft: Radix4::new(FRAME_SIZE, FftDirection::Forward),
             hamming_window: prepare_hamming_window(FRAME_SIZE, 1.0 / ::std::i16::MAX as f32),
         }
     }
@@ -35,10 +35,10 @@ impl Fft {
                 .map(|num| Complex::new(num, 0.0))
                 .collect();
 
-            let mut output: Vec<Complex<f32>> = vec![Complex::zero(); FRAME_SIZE];
-            self.fft.process(&mut converted, &mut output);
+            //let mut output: Vec<Complex<f32>> = vec![Complex::zero(); FRAME_SIZE];
+            self.fft.process(&mut converted);
 
-            let folded = fold_output(&output);
+            let folded = fold_output(&converted);
             consumer(folded);
         });
 
