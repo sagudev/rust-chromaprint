@@ -1,3 +1,5 @@
+#![allow(clippy::needless_range_loop)]
+
 extern crate base64;
 extern crate rustfft;
 

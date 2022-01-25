@@ -90,7 +90,7 @@ impl Resampler {
                 dst[dst_idx] = src[(index2 >> 32) as usize];
                 index2 += incr;
 
-                last_dst_idx = last_dst_idx
+                //last_dst_idx = last_dst_idx
             }
 
             frac += last_dst_idx * dst_incr_frac;
@@ -133,7 +133,7 @@ impl Resampler {
                 }
 
                 val = (val + (1 << (FILTER_SHIFT - 1))) >> FILTER_SHIFT;
-                dst[dst_index] = if i32::saturating_add(val, 32768) >= ::std::i32::MAX {
+                dst[dst_index] = if i32::saturating_add(val, 32768) == ::std::i32::MAX {
                     (val >> 31) ^ 32767
                 } else {
                     val
